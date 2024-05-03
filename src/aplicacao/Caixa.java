@@ -18,7 +18,7 @@ public class Caixa {
 		int programaLigado = 10;
 
 		while (programaLigado != 0) {
-
+			System.out.println("senha para testar o programa: 2109");
 			System.out.println("desligar progama [ 0 ] cadastro produto[ 1 ] venda [ 2 ] pagar crediario [ 3 ]");
 			System.out.println("cadastro funcionario[ 5 ] cadastra pessoa crediario [ 4 ] fundo de caixa R$"
 					+ banco.getFundoDeCaixa() + "");
