@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 public class Crediario extends Pessoa {
 	private int numeroCrediario;
-	public List<Produto> listaProdutoCrediario = new ArrayList<>();
+	public ArrayList<Produto> listaProdutoCrediario = new ArrayList<>();
 	
 	public Crediario(String nome, int rg, String endereco, int cpf, int numeroCrediario) {
 		super(nome, rg, endereco, cpf);
@@ -24,9 +24,10 @@ public class Crediario extends Pessoa {
 		
 	}
 	
-	public void venderCrediario(List<Produto> notaFiscal){
+	public void venderCrediario(ArrayList<Produto> notaFiscal){
 		
-		listaProdutoCrediario.add((Produto) notaFiscal);
+		listaProdutoCrediario.addAll(notaFiscal);
+		
 	}
 	
 	public double PagarCrediario(){

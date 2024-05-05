@@ -1,4 +1,5 @@
 package aplicacao;
+
 //testte
 import java.util.Scanner;
 import entidades.Funcionario;
@@ -123,9 +124,9 @@ public class Caixa {
 				System.out.println("");
 				System.out.println("quantas unidades desse produto vc quer vender");
 				baixap = sc.nextInt();
-
-				banco.removerEstoque(baixap, codigob);
+				
 				notaFiscal.add(banco.getListProduto().get(codigob));
+				banco.removerEstoque(baixap, codigob);
 				notaFiscal.get(codigob).setEstoque(0);
 				notaFiscal.get(codigob).addEstoque(baixap);
 
@@ -133,32 +134,33 @@ public class Caixa {
 				fimCaixa = sc.next().charAt(0);
 
 			}
-			System.out.println("venda crediario[c] ou avista[a]? ");
-			char couv = sc.next().charAt(0);
-			int i = 1;
-			while (i != 0) {
-				if (couv == 'c') {
-					System.out.println("qual o numeoro de Crediario");
-					int numeroc = sc.nextInt();
-					for (int j = 0; j < banco.listCrediario.size(); j++) {
-						if (banco.listCrediario.get(i).getNumeroCrediario() == numeroc) {
-							numeroc = banco.listCrediario.get(i).getNumeroCrediario();
-							List<Produto> notaTeste = new ArrayList<>(notaFiscal);
-							banco.listCrediario.get(numeroc).venderCrediario(notaTeste);
-							System.out.println("anotação feita!!!");
-							i = 0;
-						}
+		}
+		System.out.println("(funcinalidade em produção)* ou avista[a]? ");
+		char couv = sc.next().charAt(0);
+		int i = 1;
+		while (i != 0) {
+			if (couv == 'c') {
+				System.out.println("qual o numeoro de Crediario");
+				int numeroc = sc.nextInt();
+				for (int j = 0; j < banco.listCrediario.size(); j++) {
+					if (banco.listCrediario.get(j).getNumeroCrediario() == numeroc) {
+						//numeroc = banco.listCrediario.get(i).getNumeroCrediario();
+						//List<Produto> notaTeste = new ArrayList<>(notaFiscal);
+						banco.listCrediario.get(j).venderCrediario(notaFiscal);
+						System.out.println("anotação feita!!!");
+						i = 0;
 					}
-
-				} else if (couv == 'a') {
-					banco.setFundoDeCaixa(notaMostraAvista(notaFiscal));
-					i = 0;
-					
-				} else {
-					System.out.println("[ERRO] não entendi sua resposta.");
 				}
+
+			} else if (couv == 'a') {
+				banco.setFundoDeCaixa(notaMostraAvista(notaFiscal));
+				i = 0;
+				
+			} else {
+				System.out.println("[ERRO] não entendi sua resposta.");
 			}
 		}
+		
 		return banco;
 	}
 
